@@ -1,2 +1,6 @@
-body{background-image: url("../img/pexels-pixabay-220201.jpg");
+body{background-image: url("../img/the-globe.jpg");
 background-size: cover;}
+#top-search,#bottom-search{
+    background-color: black;
+    opacity: 90%;
+}
