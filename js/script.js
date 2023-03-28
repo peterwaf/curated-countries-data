@@ -20,23 +20,28 @@ function loadCountryOptions() {
     ).catch(
         error => {
             console.error(error)
+            console.log("API data not loading")
         }
     )
+    // add event listener on the generate button to generate individual country details
+    generateCountryInfoButton.addEventListener("click", (e)=>{
+        generateCountryInfo()
+    })
 }
 
 function generateCountryInfo() {
     // use https://restcountries.com/v3.1/name/{name} to grab individual country info
     let urlPartOne = "https://restcountries.com/v3.1/name/"
-    const countriesList = document.getElementById("countries-list-selector")
     let optionCollectedValue = countriesList.value
-    console.log(optionCollectedValue)
+    let countryApiUrl = urlPartOne + optionCollectedValue
+    console.log(countryApiUrl)
 }
-
-
-document.addEventListener("load", loadCountryOptions)
 
 //add event listener into the document to generate the loadCountryOptions function
 
-generateCountryInfoButton.addEventListener("click", generateCountryInfo)
-//generateCountryInfoButton.addEventListener("click",generateCountryInfo())
+document.addEventListener("load",loadCountryOptions())
+
+
+
+
 
