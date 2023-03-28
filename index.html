@@ -16,44 +16,45 @@
         <div class="row">
             <div class="col-md-12 p-3 rounded" id="top-search">
                 <br>
-                <h1 class="text-white !">Curated information about countries of the world.</h1>
-                <form class="row">
+                <h1 class="text-white">Curated information about countries of the world.</h1>
+                <div class="row">
                     <div class="col-md-6 col-xs-12 p-2">
-                        <select class="form-select" placeholder="Search Country" data-live-search="true"
-                            aria-label="Default select example">
-                            <option selected>Select Country</option>
-                            <option value="Kenya">Kenya</option>
-                            <option value="Uganda">Uganda</option>
-                            <option value="Tanzania">Tanzania</option>
+                        <select class="form-select" id="countries-list-selector">
+                            <option value="Select Country"> Select Country</option>
                         </select>
                     </div>
                     <div class="col-6 col-xs-12 p-2">
-                        <button class="btn bg-dark bg-gradient text-white" type="submit">Generate</button>
+                        <button class="btn bg-dark bg-gradient text-white" type="submit"
+                            onclick="generateCountryInfo();">Generate</button>
                     </div>
-                </form>
+                </div>
+
             </div>
         </div>
 
-        <br>
+        <div class="spacer">
+            &nbsp;
+        </div>
 
         <div class="row">
             <div class="col-md-12 rounded" id="bottom-search">
-                <div class="row p-2">
-                    <div class="col-md-7 col-xs-12 p-2 bg-white rounded">
-                        <ul>
-                            <li> Official Name : Republic of Kenya</li>
-                            <li> Population : 53771300 </li>
-                            <li> Borders : ETH,SOM,SSD,TZA,UGA </li>
-                            <li> Region : Africa</li>
-                            <li> Fifa : KEN</li>
-                            <li> Driving Side : Left </li>
-                            <li> Sub-region : Eastern Africa </li>
-                            <li>Languages : English,Swahili</li>
-                            <li>Capital : Nairobi</li>
-                            <li>Currency : Kenyan Shillings</li>
-                            <li>Symbol : Sh</li>
-                            <li>Area in KM2: 580367.0</li>
-                            <li>Googe Maps : https://goo.gl/maps/Ni9M7wcCxf8bJHLX8</li>
+                <div class="row p-10">
+                    <div class="col-md-7 col-xs-12 p-5 bg-white rounded">
+                        <ul class="list-group">
+                            <li class="list-unstyled"><span class="fw-bold">Name : </span> Republic of Kenya</li>
+                            <li class="list-unstyled"><span class="fw-bold">Population : </span>53771300 </li>
+                            <li class="list-unstyled"><span class="fw-bold">Borders : </span>ETH,SOM,SSD,TZA,UGA </li>
+                            <li class="list-unstyled"><span class="fw-bold">Region : </span>Africa</li>
+                            <li class="list-unstyled"><span class="fw-bold">Fifa :</span> KEN</li>
+                            <li class="list-unstyled"><span class="fw-bold"> Driving Side :</span> Left </li>
+                            <li class="list-unstyled"><span class="fw-bold">Sub-region :</span> Eastern Africa </li>
+                            <li class="list-unstyled"><span class="fw-bold">Languages : </span>English,Swahili</li>
+                            <li class="list-unstyled"><span class="fw-bold">Capital : </span>Nairobi</li>
+                            <li class="list-unstyled"><span class="fw-bold">Currency : </span>Kenyan Shillings</li>
+                            <li class="list-unstyled"><span class="fw-bold">Symbol : </span>Sh</li>
+                            <li class="list-unstyled"><span class="fw-bold"> Area in KM2: </span>580367.0</li>
+                            <li class="list-unstyled"><span class="fw-bold">Googe Maps :
+                                </span>https://goo.gl/maps/Ni9M7wcCxf8bJHLX8</li>
                         </ul>
 
                     </div>
@@ -63,7 +64,7 @@
                         <br>
                         <img src="img/ke.png" class="pb-2" width="320" alt="">
                         <br>
-                        
+
                         <h3 class="text-white">Coat of Arms</h3>
                         <br>
                         <img src="img/ke2.png" class="img-fluid" width="320" alt="">

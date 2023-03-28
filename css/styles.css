@@ -1,6 +1,12 @@
 body{background-image: url("../img/the-globe.jpg");
 background-size: cover;}
-#top-search,#bottom-search{
+
+#top-search{
+    background-color: black;
+    opacity: 90%;
+}
+
+#bottom-search{
     background-color: black;
     opacity: 90%;
 }
