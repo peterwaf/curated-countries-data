@@ -6,6 +6,7 @@ let generateCountryInfoButton = document.getElementById("generate-country-info-b
 //selected single country details variables
 
 let officialName = document.getElementById("country-official-names")
+let featuredCountry = document.getElementById("country-featured")
 let commonName = document.getElementById("common-name")
 let population = document.getElementById("ct-population")
 let borders = document.getElementById("ct-borders")
@@ -19,6 +20,8 @@ let currencyName = document.getElementById("ct-currency-name")
 let currencySymbol = document.getElementById("ct-currency-symbol")
 let area = document.getElementById("ct-area")
 let googleMaps = document.getElementById("ct-google-maps")
+let flag = document.getElementById("flag")
+let coatOfArms = document.getElementById("coat-of-arms")
 
 function loadCountryOptions() {
 
@@ -58,6 +61,7 @@ function generateCountryInfo() {
     ).then(selectedCountryInfo => {
         selectedCountryInfo.forEach(singleCountryInfo => {
             officialName.textContent = singleCountryInfo.name.official
+            featuredCountry.textContent = singleCountryInfo.name.official
             commonName.textContent = singleCountryInfo.name.common
             population.textContent = singleCountryInfo.population
 
@@ -103,6 +107,14 @@ function generateCountryInfo() {
             //make google link clickable in a new tab
             
             googleMaps.setAttribute("target","_blank")
+
+            //grab country and add the src attribute
+
+            flag.setAttribute("src",singleCountryInfo.flags.png)
+
+            //grab the coat of arms fland and add the src attribute
+
+            coatOfArms.setAttribute("src",singleCountryInfo.coatOfArms.png)
 
         });
     })
