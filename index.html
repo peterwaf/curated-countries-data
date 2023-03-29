@@ -26,6 +26,8 @@
                     <div class="col-6 col-xs-12 p-2">
                         <button class="btn bg-dark bg-gradient text-white" type="submit"
                             id="generate-country-info-button">Generate</button>
+                        <button class="btn bg-dark bg-gradient text-white" type="submit"
+                            id="reset" onclick="document.location.reload();">Reset</button>
                     </div>
                 </div>
 
@@ -40,8 +42,13 @@
             <div class="col-md-12 rounded" id="bottom-search">
                 <div class="row p-10">
                     <div class="col-md-7 col-xs-12 p-5 bg-white rounded">
-                        <ul class="list-group">
-                            <li class="list-unstyled"><span class="fw-bold"> Official Name : </span> <span id="country-official-names"></span> </li>
+                        <p id="default-info-country">This project utilizes RESTful API to generate country information.
+                            Select a country and click on Generate button to generate it's info.
+                        </p>
+
+                        <ul class="list-group" id="country-info-list">
+                            <li class="list-unstyled"><span class="fw-bold"> Official Name : </span> <span
+                                    id="country-official-names"></span> </li>
                             <li class="list-unstyled"><span class="fw-bold"> Common Name : </span> <span
                                     id="common-name"></span> </li>
                             <li class="list-unstyled"><span class="fw-bold"> Population: </span> <span
@@ -63,23 +70,27 @@
                             <li class="list-unstyled"><span class="fw-bold"> Currency Symbol: </span> <span
                                     id="ct-currency-symbol"></span> </li>
                             <li class="list-unstyled"><span class="fw-bold"> Area: </span> <span id="ct-area"></span>
-                            KM <sup>2</sup></li>
+                                KM <sup>2</sup></li>
                             <li class="list-unstyled"><span class="fw-bold"> Google Maps: </span> <a
                                     id="ct-google-maps"></a> </li>
                         </ul>
 
                     </div>
                     <div class="col-md-5 col-xs-12 p-5 text-center">
-                        <h2 id="country-featured" class="text-white"></h2>
-                        <h3 class="text-white text-left">Flag</h3>
-                        <br>
+                        <p class="text-white" id="default-info-flags">Country's official flag and coat of arms will be
+                            loaded here</p>
+                        <div id="country-flags">
+                            <h2 id="country-featured" class="text-white"></h2>
+                            <h3 class="text-white text-left">Flag</h3>
+                            <br>
 
-                        <img id="flag" class="pb-2 img-fluid" width="320" alt="">
-                        <br>
+                            <img id="flag" class="pb-2 img-fluid" width="320" alt="">
+                            <br>
 
-                        <h3 class="text-white">Coat of Arms</h3>
-                        <br>
-                        <img id="coat-of-arms" class="img-fluid" width="320" alt="">
+                            <h3 class="text-white">Coat of Arms</h3>
+                            <br>
+                            <img id="coat-of-arms" class="img-fluid" width="320" alt="">
+                        </div>
                     </div>
                 </div>
 

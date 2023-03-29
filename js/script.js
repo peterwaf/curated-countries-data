@@ -22,6 +22,16 @@ let area = document.getElementById("ct-area")
 let googleMaps = document.getElementById("ct-google-maps")
 let flag = document.getElementById("flag")
 let coatOfArms = document.getElementById("coat-of-arms")
+let defaultCountryInfo = document.getElementById("default-info-country")
+let defaultCountryFlagsInfo = document.getElementById("default-info-flags")
+
+
+//hide country info list by default
+
+let countryInfoList = document.getElementById("country-info-list")
+let countryFlagsInfo = document.getElementById("country-flags")
+countryInfoList.style.display = "none"
+countryFlagsInfo.style.display = "none"
 
 function loadCountryOptions() {
 
@@ -32,10 +42,10 @@ function loadCountryOptions() {
     ).then(countries => {
         countries.forEach(country => {
             let option = document.createElement("option");
-            countryCommonName = country.name.common //also to be used as option text, id and value
-            option.innerText = country.name.common
-            option.setAttribute("id", countryCommonName) // add option id
-            option.setAttribute("value", countryCommonName)
+            countrySelectOfficialName = country.name.official //also to be used as option text, id and value
+            option.innerText = country.name.official
+            option.setAttribute("id", countrySelectOfficialName) // add option id
+            option.setAttribute("value", countrySelectOfficialName)
             countriesList.add(option);
         });
     }
@@ -59,6 +69,16 @@ function generateCountryInfo() {
     fetch(countryApiUrl).then(
         response => response.json()
     ).then(selectedCountryInfo => {
+
+        //hide default info
+
+        defaultCountryInfo.style.display = "none"
+        defaultCountryFlagsInfo.style.display = "none"
+
+        //display generated content divs
+
+        countryInfoList.style.display = "block"
+        countryFlagsInfo.style.display = "block"
         selectedCountryInfo.forEach(singleCountryInfo => {
             officialName.textContent = singleCountryInfo.name.official
             featuredCountry.textContent = singleCountryInfo.name.official
@@ -67,20 +87,20 @@ function generateCountryInfo() {
 
             //check if the country has borders
 
-            if(singleCountryInfo.borders == null) {
+            if (singleCountryInfo.borders == null) {
                 borders.textContent = "None"
             }
-            else{
+            else {
                 borders.textContent = singleCountryInfo.borders
             }
             region.textContent = singleCountryInfo.region
 
             //check if the country is a member of fifa
 
-            if(singleCountryInfo.fifa == null){
+            if (singleCountryInfo.fifa == null) {
                 fifa.textContent = "Not a Member of Fifa"
             }
-            else{
+            else {
                 fifa.textContent = singleCountryInfo.fifa
             }
             drivingSide.textContent = singleCountryInfo.car.side
@@ -95,26 +115,26 @@ function generateCountryInfo() {
             console.log(singleCountryInfo.currencies)
             //grab currency object lists contained in an array
             let allCurrenciesList = Object.values(singleCountryInfo.currencies)
-            currencyName.textContent= allCurrenciesList[0].name
-            currencySymbol.textContent  = allCurrenciesList[0].symbol
+            currencyName.textContent = allCurrenciesList[0].name
+            currencySymbol.textContent = allCurrenciesList[0].symbol
             area.textContent = singleCountryInfo.area
             googleMaps.textContent = singleCountryInfo.maps.googleMaps
-            
+
             //make google link to be clickable
-            
-            googleMaps.setAttribute("href",singleCountryInfo.maps.googleMaps)
+
+            googleMaps.setAttribute("href", singleCountryInfo.maps.googleMaps)
 
             //make google link clickable in a new tab
-            
-            googleMaps.setAttribute("target","_blank")
+
+            googleMaps.setAttribute("target", "_blank")
 
             //grab country and add the src attribute
 
-            flag.setAttribute("src",singleCountryInfo.flags.png)
+            flag.setAttribute("src", singleCountryInfo.flags.png)
 
             //grab the coat of arms fland and add the src attribute
 
-            coatOfArms.setAttribute("src",singleCountryInfo.coatOfArms.png)
+            coatOfArms.setAttribute("src", singleCountryInfo.coatOfArms.png)
 
         });
     })
