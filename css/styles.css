@@ -1,5 +1,7 @@
 body{background-image: url("../img/the-globe.jpg");
-background-size: cover;}
+background-size: cover;
+font-family: Arial, Helvetica, sans-serif;
+}
 
 #top-search{
     background-color: black;

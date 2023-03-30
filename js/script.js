@@ -52,7 +52,7 @@ function loadCountryOptions() {
     ).catch(
         error => {
             console.error(error)
-            console.log("API data not loading")
+            defaultCountryInfo.textContent = "Sorry , data not available, please check your internet connection or try again later."+" "+error
         }
     )
     // add event listener on the generate button to generate individual country details
@@ -137,7 +137,12 @@ function generateCountryInfo() {
             coatOfArms.setAttribute("src", singleCountryInfo.coatOfArms.png)
 
         });
-    })
+    }).catch(
+        error => {
+            console.error(error)
+            defaultCountryInfo.textContent = "Sorry , data not available,please check your internet connection or try again later."+" "+error
+        }
+    )
 }
 
 //add event listener into the document to generate the loadCountryOptions function
