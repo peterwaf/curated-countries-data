@@ -2,10 +2,10 @@
 // GLOBAL VARIABLES
 // ============================
 
-// Calls our own Netlify function, which holds the API key server-side
+// Calls our own Vercel API route, which holds the API key server-side
 // (read from the COUNTRIES_API_KEY environment variable) instead of
 // exposing it in the browser.
-const API_BASE = "/.netlify/functions/countries";
+const API_BASE = "/api/countries";
 
 const countriesList = document.getElementById("countries-list-selector");
 const generateCountryInfoButton = document.getElementById("generate-country-info-button");
