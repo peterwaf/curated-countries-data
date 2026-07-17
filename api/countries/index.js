@@ -7,9 +7,18 @@ module.exports = async function handler(req, res) {
         });
     }
 
+    const byOfficialName = req.query.by_official_name;
+    const extraPath = byOfficialName
+        ? `/names.official/${encodeURIComponent(byOfficialName)}`
+        : "";
+
     const query = new URLSearchParams();
 
     for (const [key, value] of Object.entries(req.query)) {
+        if (key === "by_official_name") {
+            continue;
+        }
+
         if (Array.isArray(value)) {
             value.forEach(item => query.append(key, item));
         } else if (value !== undefined) {
@@ -18,7 +27,7 @@ module.exports = async function handler(req, res) {
     }
 
     const url =
-        "https://api.restcountries.com/countries/v5" +
+        `https://api.restcountries.com/countries/v5${extraPath}` +
         (query.toString() ? `?${query.toString()}` : "");
 
     try {

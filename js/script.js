@@ -123,7 +123,7 @@ function generateCountryInfo() {
 
     // Exact-match, case-insensitive lookup by official name.
     fetch(
-        `${API_BASE}/names.official/${encodeURIComponent(selectedCountry)}`
+        `${API_BASE}?by_official_name=${encodeURIComponent(selectedCountry)}`
     )
         .then(parseApiResponse)
         .then(data => {
