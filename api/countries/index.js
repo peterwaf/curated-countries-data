@@ -7,25 +7,9 @@ module.exports = async function handler(req, res) {
         });
     }
 
-    // Catch-all route segment from /api/countries/*
-    const rawPath = req.query.path;
-    const pathSegments = Array.isArray(rawPath)
-        ? rawPath
-        : rawPath
-            ? [rawPath]
-            : [];
-
-    const extraPath = pathSegments.length
-        ? `/${pathSegments.map(segment => encodeURIComponent(segment)).join("/")}`
-        : "";
-
     const query = new URLSearchParams();
 
     for (const [key, value] of Object.entries(req.query)) {
-        if (key === "path") {
-            continue;
-        }
-
         if (Array.isArray(value)) {
             value.forEach(item => query.append(key, item));
         } else if (value !== undefined) {
@@ -34,7 +18,7 @@ module.exports = async function handler(req, res) {
     }
 
     const url =
-        `https://api.restcountries.com/countries/v5${extraPath}` +
+        "https://api.restcountries.com/countries/v5" +
         (query.toString() ? `?${query.toString()}` : "");
 
     try {
