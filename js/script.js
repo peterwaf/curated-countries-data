@@ -2,7 +2,10 @@
 // GLOBAL VARIABLES
 // ============================
 
-const API_BASE = "https://api.restcountries.com/countries/v5";
+// Calls our own Netlify function, which holds the API key server-side
+// (read from the COUNTRIES_API_KEY environment variable) instead of
+// exposing it in the browser.
+const API_BASE = "/.netlify/functions/countries";
 
 const countriesList = document.getElementById("countries-list-selector");
 const generateCountryInfoButton = document.getElementById("generate-country-info-button");
@@ -56,11 +59,6 @@ function parseApiResponse(response) {
     });
 }
 
-function authHeaders() {
-    return { "Authorization": `Bearer ${CONFIG.API_KEY}` };
-}
-
-
 // ============================
 // LOAD COUNTRY OPTIONS
 // ============================
@@ -74,7 +72,7 @@ function loadCountryOptions() {
         const url =
             `${API_BASE}?response_fields=names.official&limit=100&offset=${offset}`;
 
-        return fetch(url, { headers: authHeaders() })
+        return fetch(url)
             .then(parseApiResponse)
             .then(data => {
 
@@ -125,8 +123,7 @@ function generateCountryInfo() {
 
     // Exact-match, case-insensitive lookup by official name.
     fetch(
-        `${API_BASE}/names.official/${encodeURIComponent(selectedCountry)}`,
-        { headers: authHeaders() }
+        `${API_BASE}/names.official/${encodeURIComponent(selectedCountry)}`
     )
         .then(parseApiResponse)
         .then(data => {
